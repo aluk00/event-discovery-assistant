@@ -1,0 +1,13 @@
+[project]
+name = "event-discovery-assistant"
+version = "0.1.0"
+description = "Small event aggregation prototype for UK music and nightlife listings"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+event-discovery = "event_discovery.cli:main"
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
