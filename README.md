@@ -1,0 +1,42 @@
+# Event Discovery Assistant
+
+Starter event aggregation project for London music, nightlife, DJ sets, club
+nights, gigs, and live events.
+
+## Current sources
+
+- Skiddle Events API
+- Eventbrite API
+- Ticketmaster Discovery API
+
+## Later sources
+
+- Resident Advisor, only if the access method is acceptable and stable
+- DICE, if a usable partner token is available
+- Venue/promoter calendars
+
+## Setup
+
+1. Copy `.env.example` to `.env`.
+2. Paste regenerated API keys into `.env`.
+3. Run:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+event-discovery search --city London --days 14 --keyword techno
+```
+
+Without installing the package, run directly from the source folder:
+
+```bash
+PYTHONPATH=src python3 -m event_discovery.cli search --city London --days 14 --keyword techno
+```
+
+The command prints normalized event results as JSON.
+
+## Security
+
+Never commit `.env` or raw API keys to GitHub. If keys were posted in chat,
+regenerate them before using this project seriously.
