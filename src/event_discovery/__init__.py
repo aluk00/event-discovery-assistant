@@ -1,0 +1,1 @@
+"""Event discovery aggregation prototype."""
