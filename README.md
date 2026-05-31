@@ -1,7 +1,7 @@
 # Event Discovery Assistant
 
-Starter event aggregation project for London music, nightlife, DJ sets, club
-nights, gigs, and live events.
+Starter event aggregation project for London, Ireland, and Northern Ireland
+music, nightlife, DJ sets, club nights, gigs, and live events.
 
 ## Current sources
 
@@ -32,6 +32,14 @@ Without installing the package, run directly from the source folder:
 
 ```bash
 PYTHONPATH=src python3 -m event_discovery.cli search --city London --days 14 --keyword techno
+```
+
+Useful examples:
+
+```bash
+PYTHONPATH=src python3 -m event_discovery.cli search --city Ireland --days 30 --keyword techno
+PYTHONPATH=src python3 -m event_discovery.cli search --city "Northern Ireland" --days 30 --keyword house
+PYTHONPATH=src python3 -m event_discovery.cli search --city All --days 14 --keyword electronic
 ```
 
 The command prints normalized event results as JSON.
