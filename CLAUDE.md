@@ -18,6 +18,9 @@ ruff check .            # linter
 event-discovery search --city London --days 14 --keyword techno
 ```
 
+`.github/workflows/ci.yml` runs the same `ruff check .` and `pytest` on every
+push to `main` and on every pull request, so both should pass before pushing.
+
 Without the package installed, the CLI also runs from source:
 
 ```bash
