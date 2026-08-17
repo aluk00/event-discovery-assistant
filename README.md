@@ -44,6 +44,19 @@ PYTHONPATH=src python3 -m event_discovery.cli search --city All --days 14 --keyw
 
 The command prints normalized event results as JSON.
 
+## Development
+
+Install the dev extras to get the test suite and the linter:
+
+```bash
+pip install -e ".[dev]"
+pytest
+ruff check .
+```
+
+In Claude Code on the web this is done automatically by
+`.claude/hooks/session-start.sh` before each session starts.
+
 ## Security
 
 Never commit `.env` or raw API keys to GitHub. If keys were posted in chat,
