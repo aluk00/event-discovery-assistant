@@ -1,13 +1,7 @@
 {
   "artboards": [
-    { "file": "Main.dc.html", "title": "Production Plan · deck native", "x": 0, "y": 0, "w": 1440, "h": 810 },
-    { "file": "Spending.dc.html", "title": "Spending · deck native", "x": 1560, "y": 0, "w": 1440, "h": 810 },
-    { "file": "ProductionBold.dc.html", "title": "Production Plan · bolder", "x": 0, "y": 960, "w": 1440, "h": 810 },
-    { "file": "SpendingBold.dc.html", "title": "Spending · bolder", "x": 1560, "y": 960, "w": 1440, "h": 810 }
-  ],
-  "annotations": [
-    { "id": "treatment-a", "x": -360, "y": 0, "w": 280, "text": "TREATMENT A — deck native\n\nLifted straight from the existing tracker pages: 1.2px grey cell rules, flat rectangular legend chips, stage colour flooding the whole cell." },
-    { "id": "treatment-b", "x": -360, "y": 960, "w": 280, "text": "TREATMENT B — bolder\n\nThe JANUARY '26 calendar language brought into the deck palette: 2px black rules, rounded outlined badges, accent dot beside the title." }
+    { "file": "Main.dc.html", "title": "Deliverables", "x": 0, "y": 0, "w": 1440, "h": 810 },
+    { "file": "Spend.dc.html", "title": "Spend", "x": 1560, "y": 0, "w": 1440, "h": 810 }
   ],
   "launch": { "view": "canvas" }
 }
