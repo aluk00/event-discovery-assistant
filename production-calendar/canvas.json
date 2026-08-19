@@ -1,0 +1,12 @@
+{
+  "artboards": [
+    { "file": "August.dc.html",      "x": 0,    "y": 0,    "w": 1600, "h": 1200, "title": "August '26 · calendar" },
+    { "file": "AugustPay.dc.html",   "x": 0,    "y": 1320, "w": 1180, "h": 780,  "title": "August '26 · pay sheet" },
+    { "file": "September.dc.html",   "x": 1720, "y": 0,    "w": 1600, "h": 1050, "title": "September '26 · calendar" },
+    { "file": "SeptemberPay.dc.html","x": 1720, "y": 1320, "w": 1180, "h": 880,  "title": "September '26 · pay sheet" },
+    { "file": "October.dc.html",     "x": 3440, "y": 0,    "w": 1600, "h": 1050, "title": "October '26 · calendar" },
+    { "file": "OctoberPay.dc.html",  "x": 3440, "y": 1320, "w": 1180, "h": 780,  "title": "October '26 · pay sheet" },
+    { "file": "Tracker.dc.html",     "x": 5160, "y": 0,    "w": 1520, "h": 1440, "title": "What exists" }
+  ],
+  "launch": { "view": "canvas" }
+}

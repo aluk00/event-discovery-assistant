@@ -7,3 +7,8 @@ __pycache__/
 .ruff_cache/
 data/*.json
 data/*.db
+
+# production-calendar build output
+production-calendar/node_modules/
+production-calendar/*.pptx
+production-calendar/type-a-production-calendar.html

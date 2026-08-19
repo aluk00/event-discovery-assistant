@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;600;700;800&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; color: #2B3F6C; }
+    a { color: #2B3F6C; } a:hover { color: #1B4FE8; }
+    .disp { font-family: 'Archivo Black', 'Helvetica Neue', Arial Black, sans-serif; font-weight: 400; letter-spacing: -0.02em; }
+    .grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0; border: 3px solid #2B3F6C; background: #2B3F6C; }
+    .hd { background: #FFFDF7; padding: 12px 10px; text-align: center; font-weight: 800; font-size: 12.5px;
+          letter-spacing: 0.12em; text-transform: uppercase; margin: 0 1.5px 1.5px 0; }
+    .cell { background: #FFFDF7; min-height: 150px; padding: 10px 10px 12px; display: flex; flex-direction: column; gap: 6px; margin: 0 1.5px 1.5px 0; }
+    .num { font-family: 'Archivo Black', 'Helvetica Neue', Arial Black, sans-serif; font-size: 17px; }
+    .out { color: #BDC6DA; }
+    .tag { font-weight: 800; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; border: 2px solid #2B3F6C;
+           border-radius: 999px; padding: 2px 8px; background: #FFFDF7; white-space: nowrap; }
+    .pill { display: flex; align-items: center; gap: 6px; border: 2.5px solid #2B3F6C; border-radius: 999px;
+            box-shadow: 2px 2px 0 #2B3F6C; padding: 4px 9px 4px 4px; font-weight: 800; font-size: 10.5px;
+            letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.15; }
+    .prop { border-style: dashed; box-shadow: none; }
+    .chip { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 21px; height: 21px;
+            border-radius: 999px; border: 2px solid #2B3F6C; background: #FFFDF7; color: #2B3F6C; font-weight: 800; font-size: 9px; }
+    .note { font-size: 10.5px; font-weight: 700; color: #7A87A8; line-height: 1.35; }
+    .warn { font-size: 10.5px; font-weight: 800; color: #C2410C; line-height: 1.35; }
+    .oot { background: repeating-linear-gradient(45deg, #DAD5C8 0 6px, #C9C3B4 6px 12px); }
+    .mark { display: flex; align-items: center; gap: 12px; }
+    .mark img { height: 34px; width: auto; display: block; }
+    .mark span { font-weight: 800; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #7A87A8; }
+    .th { padding: 12px 13px; background: #2B3F6C; color: #FBF8EF; font-size: 10.5px; font-weight: 800; letter-spacing: 0.11em; }
+    .td { padding: 12px 13px; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; font-size: 13px; font-weight: 700; }
+    .n { font-family: 'Archivo Black', sans-serif; font-size: 16px; text-align: center; }
+  </style>
+</helmet>
+<div style="width: 1600px; box-sizing: border-box; background: #FBF8EF; padding: 40px 48px 44px; display: flex; flex-direction: column; gap: 22px;">
+
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 30px;">
+    <div class="disp" style="font-size: 62px; line-height: 0.95;">SEPTEMBER '26</div>
+    <div style="display: flex; align-items: center; gap: 18px;">
+      <div style="display: flex; align-items: center; gap: 7px;">
+        <span style="font-weight: 800; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #7A87A8;">Day = stage</span><span style="width: 26px; height: 20px; background: #EFE0F7; border: 2.5px solid #2B3F6C;"></span><span style="width: 26px; height: 20px; background: #F8CFA4; border: 2.5px solid #2B3F6C;"></span><span style="width: 26px; height: 20px; background: #F9C9DC; border: 2.5px solid #2B3F6C;"></span><span style="width: 26px; height: 20px; background: #F4E7B0; border: 2.5px solid #2B3F6C;"></span><span style="width: 26px; height: 20px; background: #DCEFA6; border: 2.5px solid #2B3F6C;"></span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 7px;">
+        <span style="font-weight: 800; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #7A87A8;">Pill = client</span><span style="width: 26px; height: 20px; background: #1B4FE8; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span><span style="width: 26px; height: 20px; background: #F5A9D0; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span><span style="width: 26px; height: 20px; background: #C6E86A; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span><span style="width: 26px; height: 20px; background: #DCCFF0; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="hd">Sunday</div><div class="hd">Monday</div><div class="hd">Tuesday</div><div class="hd">Wednesday</div><div class="hd">Thursday</div><div class="hd">Friday</div><div class="hd">Saturday</div>
+    <div class="cell"><span class="num out">30</span></div>
+    <div class="cell"><span class="num out">31</span></div>
+    <div class="cell" style="background: #EFE0F7;">
+      <span class="num">01</span>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AN</span>FIRST WEEK · OSG + BOARD</div>
+      <div class="pill" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AL</span>WK06 · P11</div>
+      <div class="note">Vayner in office</div>
+    </div>
+    <div class="cell" style="background: #F4E7B0;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">02</span><span class="tag">TO CLIENT</span></div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AL</span>3 PRE-PRO PACKS → CLIENT</div>
+    </div>
+    <div class="cell" style="background: #EFE0F7;">
+      <span class="num">03</span>
+      <div class="pill prop" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AL</span>WK06 · P11 + WRITE HANDOVER</div>
+      <div class="pill prop" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AN</span>WHAT'S IN MY BAG · BUILD</div>
+      <div class="note">Therapy 16:00 · Vayner office</div>
+    </div>
+    <div class="cell" style="background: #F4E7B0;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">04</span><span class="tag" style="background: #F8CFA4;">CONTRACT ENDS</span></div>
+      <div class="pill" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AL</span>WPP FINAL DAY · HANDOVER</div>
+      <div class="warn">Also an all-day appointment — write the handover on the 3rd</div>
+    </div>
+    <div class="cell oot">
+      <span class="num">05</span>
+      <div class="note">MANCHESTER · Abi's birthday</div>
+    </div>
+    <div class="cell oot">
+      <span class="num">06</span>
+      <div class="note">Back 20:42</div>
+    </div>
+    <div class="cell" style="background: #F9C9DC;">
+      <span class="num">07</span>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AN</span>PRE-PRO V2 / V3</div>
+      <div class="note">Editorial weekly 11:00 · Vayner office</div>
+    </div>
+    <div class="cell" style="background: #F4E7B0;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">08</span><span class="tag">TO CLIENT</span></div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AL</span>FINAL PRE-PRO PACKS</div>
+      <div class="pill" style="background: #DCCFF0; color: #2B3F6C;"><span class="chip">AL</span>HALIMA · WEBSITE DESIGN</div>
+      <div class="warn">Two client deliverables land the same day</div>
+    </div>
+    <div class="cell" style="background: #F8CFA4;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">09</span><span class="tag">SHOOT DAY</span></div>
+      <div class="pill prop" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">DM</span>WHERE THE SUN GOES · SHOOT</div>
+      <div class="pill prop" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">DM</span>40 FEET AWAY · SHOOT</div>
+      <div class="pill prop" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AN</span>DRESSED TO ELEVENS · BUILD</div>
+    </div>
+    <div class="cell">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">10</span><span class="tag" style="background: #CFE0F5;">TRAVEL</span></div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AL</span>LHR → DUB</div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">DM</span>LHR → DUB</div>
+      <div class="note">Therapy 16:00 · fare quoted, not booked</div>
+    </div>
+    <div class="cell" style="background: #F8CFA4;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">11</span><span class="tag">SHOOT DAY</span></div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AL</span>EXPLAIN HURLING</div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AL</span>MATCHDAY RITUALS</div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">DM</span>PRODUCE · PARNELL PARK</div>
+      <div class="note">Parnell Park, Dublin · 18:45</div>
+    </div>
+    <div class="cell" style="background: #F8CFA4;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">12</span><span class="tag">SHOOT DAY</span></div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AL</span>FIRST WEEK PROMISES</div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">DM</span>PRODUCE · UCC CORK</div>
+      <div class="note">UCC Freshers' Festival, Cork</div>
+    </div>
+    <div class="cell" style="background: #F9C9DC;">
+      <span class="num">13</span>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AL</span>DUB → LHR</div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AD</span>ALL THREE · FIRST PASS</div>
+      <div class="note">Rushes backed up and handed to edit same day</div>
+    </div>
+    <div class="cell" style="background: #F9C9DC;">
+      <span class="num">14</span>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AD</span>ALL THREE · EDIT</div>
+      <div class="note">Editorial weekly 11:00 · Vayner office</div>
+    </div>
+    <div class="cell" style="background: #F9C9DC;">
+      <span class="num">15</span>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AD</span>ALL THREE · FINAL PASS</div>
+      <div class="note">Vayner in office</div>
+    </div>
+    <div class="cell" style="background: #F4E7B0;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">16</span><span class="tag">TO CLIENT</span></div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AL</span>ALL THREE EDITS → CLIENT</div>
+    </div>
+    <div class="cell" style="background: #F4E7B0;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">17</span><span class="tag" style="background: #F8CFA4;">LAST DAY</span></div>
+      <div class="pill prop" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AL</span>P11 · HAND TO THE TEAM</div>
+      <div class="pill prop" style="background: #F5A9D0; color: #2B3F6C;"><span class="chip">AL</span>INDEED · COVER PLAN</div>
+      <div class="warn">Last working day before 11 days off</div>
+    </div>
+    <div class="cell oot">
+      <span class="num">18</span>
+      <div class="note">BIRTHDAY LEAVE</div>
+    </div>
+    <div class="cell oot">
+      <span class="num">19</span>
+      <div class="note">Buffer · travel prep</div>
+    </div>
+    <div class="cell oot">
+      <span class="num">20</span>
+      <div class="note">GREECE</div>
+    </div>
+    <div class="cell oot">
+      <span class="num">21</span>
+
+    </div>
+    <div class="cell oot">
+      <span class="num">22</span>
+
+    </div>
+    <div class="cell oot">
+      <span class="num">23</span>
+
+    </div>
+    <div class="cell oot">
+      <span class="num">24</span>
+
+    </div>
+    <div class="cell oot">
+      <span class="num">25</span>
+
+    </div>
+    <div class="cell oot">
+      <span class="num">26</span>
+
+    </div>
+    <div class="cell oot">
+      <span class="num">27</span>
+
+    </div>
+    <div class="cell oot">
+      <span class="num">28</span>
+      <div class="note">Home tonight</div>
+    </div>
+    <div class="cell" style="background: #EFE0F7;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">29</span><span class="tag" style="background: #DCEFA6;">BACK</span></div>
+      <div class="pill prop" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AL</span>REVIEW WHAT THE TEAM SHIPPED</div>
+      <div class="note">Vayner in office</div>
+    </div>
+    <div class="cell" style="background: #F9C9DC;">
+      <span class="num">30</span>
+      <div class="pill prop" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AD</span>P11 BACKLOG · EDIT</div>
+    </div>
+    <div class="cell"><span class="num out">01</span></div>
+    <div class="cell"><span class="num out">02</span></div>
+    <div class="cell"><span class="num out">03</span></div>
+  </div>
+
+  <div class="mark">
+    <img src="typea-logo.webp" alt="TYPE-A studios">
+    <span>Production · Sep 26</span>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
