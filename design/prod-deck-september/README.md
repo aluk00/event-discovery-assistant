@@ -11,15 +11,17 @@ Nine artboards across three canvas pages:
 | Per asset | One slide per asset — what that single asset costs and why |
 | Template | The same shape with the standing rules, ready for the next asset |
 
-Everything — slides, `canvas.json`, `crew-sheet.csv` — comes off one `ASSETS`
-list in `gen.py`, so a schedule change moves the lot together.
+Everything — slides, `canvas.json`, `crew-sheet.csv`, and `deck.json` for the
+PowerPoint build — comes off one `ASSETS` list in `gen.py`, so a schedule change
+moves the lot together.
 
 ## Crew rules
 
 Encoded in `gen.py` rather than written into the copy:
 
-- **Adam edits every asset** — billed per delivered asset via `units` (Reactive
-  holds two slots a month, so it carries `units=4`).
+- **Adam edits every asset he is on** — billed per delivered asset via `units`.
+  Reactive holds two slots a month, so it carries `units=4`; EP Bag Check is
+  built in-house rather than edited, so it carries `units=0` and no fee.
 - **Diane is only on shoots that need two people** — `two_person=True`, billed
   per *shoot day*. Explain Hurling and Matchday Rituals come off the same
   evening at Parnell Park, so that day bills once and splits between them.
@@ -38,6 +40,9 @@ Money is allocated in **pennies**, with remainders handed to the earliest share,
 so the per-asset slides sum to the total slide exactly rather than drifting a
 penny per division. That is why Explain Hurling reads GBP 357.02 and Matchday
 Rituals GBP 357.01.
+
+An asset with nothing chargeable renders a single NO SPEND line rather than an
+empty table.
 
 ## Budget
 
@@ -78,7 +83,7 @@ legend rows, no note strips — the badges and column heads carry the meaning.
 
 ## Regenerating
 
-`gen.py` writes the artboards, `canvas.json` and the CSV in one run:
+`gen.py` writes the artboards, `canvas.json`, `deck.json` and the CSV in one run:
 
 ```bash
 python3 gen.py
@@ -98,8 +103,19 @@ node "$BASE/seed-canvas.mjs" \
 node "$BASE/seed-canvas.mjs" --check september-shoot-block.html
 ```
 
+## PowerPoint
+
+`build_pptx.js` turns `deck.json` into an editable 9-slide deck at 10 x 5.625in,
+matching the existing deck's page size so the slides import straight into it
+(Slides: File -> Import slides). Real text and tables, not images.
+
+```bash
+npm install pptxgenjs
+node build_pptx.js
+```
+
 ## Adding an asset
 
 Append a `dict(...)` to `ASSETS` and a slug to `SLUGS`, then re-run. The new
 asset picks up its own spend slide, its share of any trip it is flagged onto,
-a row in the deliverables table and a row in the sheet.
+a row in the deliverables table, a row in the sheet and a PowerPoint slide.
