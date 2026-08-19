@@ -1,26 +1,43 @@
 # BOOST Ireland — deliverables + spend, 19 Aug to 20 Sep
 
-Design source for two slides added to the re:act prod deck ("2.0 prod deck",
+Design source for the slides added to the re:act prod deck ("2.0 prod deck",
 owned by Diane and shared in), plus the crew sheet generated alongside them.
 
-- **Deliverables** (`Main.dc.html`) — every asset in the window line by line:
-  format, shoot date and location, edit window, V1 due, and who is on it.
-- **Spend** (`Spend.dc.html`) — crew and travel against the day-rate budget.
-- **Crew sheet** (`crew-sheet.csv`) — the same rows flattened for a spreadsheet
-  Diane and Adam can sort and scan.
+Nine artboards across three canvas pages:
 
-All three come off one `ASSETS` list in `gen.py`, so a change to the schedule
-moves the slides, the totals and the sheet together.
+| Page | Artboards |
+| --- | --- |
+| Overview | `Main` (deliverables, every asset line by line) and `TotalSpend` (everything pooled, against the budget) |
+| Per asset | One slide per asset — what that single asset costs and why |
+| Template | The same shape with the standing rules, ready for the next asset |
+
+Everything — slides, `canvas.json`, `crew-sheet.csv` — comes off one `ASSETS`
+list in `gen.py`, so a schedule change moves the lot together.
 
 ## Crew rules
 
 Encoded in `gen.py` rather than written into the copy:
 
-- **Adam edits every asset** — billed per delivered asset, `units` on each entry
-  (Reactive holds two slots a month, so it carries `units=4`).
+- **Adam edits every asset** — billed per delivered asset via `units` (Reactive
+  holds two slots a month, so it carries `units=4`).
 - **Diane is only on shoots that need two people** — `two_person=True`, billed
-  per distinct *shoot day*. Explain Hurling and Matchday Rituals come off the
-  same evening at Parnell Park, so that day bills once, not twice.
+  per *shoot day*. Explain Hurling and Matchday Rituals come off the same
+  evening at Parnell Park, so that day bills once and splits between them.
+
+## Allocating shared costs
+
+The per-asset slides exist because a pooled total cannot answer "what did this
+one cost". Three kinds of line:
+
+- **Direct** — Adam's edit fee, and fuel for the leg an asset is the reason for.
+- **Per day, split** — Diane's day divides across the assets shot that day.
+- **Per trip, split** — flights and the Dublin stay divide across the assets the
+  trip serves (`trip=True`).
+
+Money is allocated in **pennies**, with remainders handed to the earliest share,
+so the per-asset slides sum to the total slide exactly rather than drifting a
+penny per division. That is why Explain Hurling reads GBP 357.02 and Matchday
+Rituals GBP 357.01.
 
 ## Budget
 
@@ -56,12 +73,12 @@ artboards land at 1440x810:
 - **Geometry** — 64px side margins, 1312px content width, 41px black header band,
   2px rules and rounded outlined badges.
 
-Both slides are deliberately bare: title, rule, table, footer. No eyebrows, no
+Every slide is deliberately bare: title, rule, table(s), footer. No eyebrows, no
 legend rows, no note strips — the badges and column heads carry the meaning.
 
 ## Regenerating
 
-`gen.py` writes both artboards and the CSV:
+`gen.py` writes the artboards, `canvas.json` and the CSV in one run:
 
 ```bash
 python3 gen.py
@@ -76,7 +93,13 @@ node "$BASE/seed-canvas.mjs" \
   --template "$BASE/payload.template.html" \
   --out september-shoot-block.html \
   --title "September Shoot Block" \
-  --artboard Main.dc.html --artboard Spend.dc.html \
+  $(for f in *.dc.html; do printf -- "--artboard %s " "$f"; done) \
   --canvas canvas.json
 node "$BASE/seed-canvas.mjs" --check september-shoot-block.html
 ```
+
+## Adding an asset
+
+Append a `dict(...)` to `ASSETS` and a slug to `SLUGS`, then re-run. The new
+asset picks up its own spend slide, its share of any trip it is flagged onto,
+a row in the deliverables table and a row in the sheet.
