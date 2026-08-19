@@ -27,6 +27,9 @@ DISPLAY = "'Archivo Black', 'Arial Black', 'Helvetica Neue', sans-serif"
 DW = "font-weight: 900; "
 BODY = "'Space Grotesk', 'Helvetica Neue', Arial, sans-serif"
 
+ROOT_STYLE = (f"position: relative; width: {W}px; height: {H}px; background: {PAPER}; "
+              f"padding: 48px {MARGIN}px 0; box-sizing: border-box; font-family: {BODY};")
+
 RULE = f"2px solid {INK}"
 PILL = f"2px solid {INK}"
 
@@ -107,7 +110,7 @@ def document(body):
     a {{ color: {ACCENT}; }} a:hover {{ color: #B92E1B; }}
   </style>
 </helmet>
-<div style="position: relative; width: {W}px; height: {H}px; background: {PAPER}; padding: 48px {MARGIN}px 0; box-sizing: border-box; font-family: {BODY};">
+<div style="{ROOT_STYLE}">
 {body}
 </div>
 </x-dc>
