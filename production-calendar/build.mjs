@@ -76,10 +76,7 @@ class Component extends DCLogic {
 const pill = (t) => {
   const c = CO[t.co];
   const cls = 'pill' + (t.proposed ? ' prop' : '');
-  const status = t.status === 'done' ? '&#10003;' : t.status === 'wip' ? '&#8943;' : '&#9711;';
-  const bg = t.status === 'done' ? '#DCEFA6' : t.status === 'wip' ? '#F4E7B0' : T.card;
-  const dot = t.status === false ? '' : `<span class="dot" style="background: ${bg};">${status}</span>`;
-  return `      <div class="${cls}" style="background: ${c.bg}; color: ${c.fg};"><span class="chip">${esc(t.who)}</span>${esc(t.text)}${dot}</div>`;
+  return `      <div class="${cls}" style="background: ${c.bg}; color: ${c.fg};"><span class="chip">${esc(t.who)}</span>${esc(t.text)}</div>`;
 };
 
 function monthBoard(m) {
