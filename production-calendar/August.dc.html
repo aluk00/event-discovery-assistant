@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;600;700;800&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; color: #2B3F6C; }
+    a { color: #2B3F6C; } a:hover { color: #1B4FE8; }
+    .disp { font-family: 'Archivo Black', 'Helvetica Neue', Arial Black, sans-serif; font-weight: 400; letter-spacing: -0.02em; }
+    .logo { font-family: 'Archivo Black', 'Helvetica Neue', Arial Black, sans-serif; color: #E9C87F;
+            -webkit-text-stroke: 3px #2B3F6C; paint-order: stroke fill; text-shadow: 4px 4px 0 #2B3F6C; letter-spacing: -0.02em; }
+    .grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0; border: 3px solid #2B3F6C; background: #2B3F6C; }
+    .hd { background: #FFFDF7; padding: 12px 10px; text-align: center; font-weight: 800; font-size: 12.5px;
+          letter-spacing: 0.12em; text-transform: uppercase; margin: 0 1.5px 1.5px 0; }
+    .cell { background: #FFFDF7; min-height: 150px; padding: 10px 10px 12px; display: flex; flex-direction: column; gap: 6px; margin: 0 1.5px 1.5px 0; }
+    .num { font-family: 'Archivo Black', 'Helvetica Neue', Arial Black, sans-serif; font-size: 17px; }
+    .out { color: #BDC6DA; }
+    .tag { font-weight: 800; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; border: 2px solid #2B3F6C;
+           border-radius: 999px; padding: 2px 8px; background: #FFFDF7; white-space: nowrap; }
+    .pill { display: flex; align-items: center; gap: 6px; border: 2.5px solid #2B3F6C; border-radius: 999px;
+            box-shadow: 2px 2px 0 #2B3F6C; padding: 4px 9px 4px 4px; font-weight: 800; font-size: 10.5px;
+            letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.15; }
+    .prop { border-style: dashed; box-shadow: none; }
+    .chip { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 21px; height: 21px;
+            border-radius: 999px; border: 2px solid #2B3F6C; background: #FFFDF7; color: #2B3F6C; font-weight: 800; font-size: 9px; }
+    .dot { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px;
+           border-radius: 999px; border: 2px solid #2B3F6C; background: #FFFDF7; color: #2B3F6C; font-size: 9px; font-weight: 800; margin-left: auto; }
+    .note { font-size: 10.5px; font-weight: 700; color: #7A87A8; line-height: 1.35; }
+    .warn { font-size: 10.5px; font-weight: 800; color: #C2410C; line-height: 1.35; }
+    .oot { background: repeating-linear-gradient(45deg, #DAD5C8 0 6px, #C9C3B4 6px 12px); }
+    .box { background: #FFFDF7; border: 3px solid #2B3F6C; box-shadow: 5px 5px 0 #2B3F6C; }
+  </style>
+</helmet>
+<div style="width: 1600px; box-sizing: border-box; background: #FBF8EF; padding: 44px 48px 48px; display: flex; flex-direction: column; gap: 26px;">
+
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 30px;">
+    <div class="logo" style="font-size: 62px; line-height: 0.95;">AUGUST '26</div>
+    <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: flex-end;">
+      <span class="tag" style="font-size: 11.5px; padding: 5px 12px; background: #DCEFA6;">WPP EXTENDED — NOW RUNS TO 4 SEP</span>
+      <div style="display: flex; align-items: center; gap: 7px;">
+        <span style="font-weight: 800; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #7A87A8;">Day = stage</span><span style="width: 26px; height: 20px; background: #EFE0F7; border: 2.5px solid #2B3F6C;"></span><span style="width: 26px; height: 20px; background: #F8CFA4; border: 2.5px solid #2B3F6C;"></span><span style="width: 26px; height: 20px; background: #F9C9DC; border: 2.5px solid #2B3F6C;"></span><span style="width: 26px; height: 20px; background: #F4E7B0; border: 2.5px solid #2B3F6C;"></span><span style="width: 26px; height: 20px; background: #DCEFA6; border: 2.5px solid #2B3F6C;"></span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 7px;">
+        <span style="font-weight: 800; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #7A87A8;">Pill = company</span><span style="width: 26px; height: 20px; background: #1B4FE8; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span><span style="width: 26px; height: 20px; background: #F5A9D0; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span><span style="width: 26px; height: 20px; background: #C6E86A; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span><span style="width: 26px; height: 20px; background: #DCCFF0; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="hd">Sunday</div><div class="hd">Monday</div><div class="hd">Tuesday</div><div class="hd">Wednesday</div><div class="hd">Thursday</div><div class="hd">Friday</div><div class="hd">Saturday</div>
+    <div class="cell"><span class="num out">26</span></div>
+    <div class="cell"><span class="num out">27</span></div>
+    <div class="cell"><span class="num out">28</span></div>
+    <div class="cell"><span class="num out">29</span></div>
+    <div class="cell"><span class="num out">30</span></div>
+    <div class="cell"><span class="num out">31</span></div>
+    <div class="cell"><span class="num">01</span></div>
+    <div class="cell"><span class="num">02</span></div>
+    <div class="cell"><span class="num">03</span></div>
+    <div class="cell"><span class="num">04</span></div>
+    <div class="cell"><span class="num">05</span></div>
+    <div class="cell"><span class="num">06</span></div>
+    <div class="cell"><span class="num">07</span></div>
+    <div class="cell"><span class="num">08</span></div>
+    <div class="cell"><span class="num">09</span></div>
+    <div class="cell"><span class="num">10</span></div>
+    <div class="cell"><span class="num">11</span></div>
+    <div class="cell"><span class="num">12</span></div>
+    <div class="cell"><span class="num">13</span></div>
+    <div class="cell"><span class="num">14</span></div>
+    <div class="cell"><span class="num">15</span></div>
+    <div class="cell"><span class="num">16</span></div>
+    <div class="cell"><span class="num">17</span></div>
+    <div class="cell"><span class="num">18</span></div>
+    <div class="cell" style="background: #EFE0F7;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">19</span><span class="tag">TODAY</span></div>
+      <div class="pill" style="background: #F5A9D0; color: #2B3F6C;"><span class="chip">AL</span>JNP FR PAGES ×8<span class="dot" style="background: #F4E7B0;">&#8943;</span></div>
+      <div class="pill" style="background: #F5A9D0; color: #2B3F6C;"><span class="chip">AL</span>14:30 JNP REVIEW</div>
+      <div class="pill" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AL</span>P11 EDITS BRIEF 10:30</div>
+      <div class="pill" style="background: #DCCFF0; color: #2B3F6C;"><span class="chip">AL</span>HALIMA · ANSWERS + INV 1<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+    </div>
+    <div class="cell" style="background: #F9C9DC;">
+      <span class="num">20</span>
+      <div class="pill" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AL</span>YES BUT · REVISIONS<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="pill" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AL</span>BANDANA HI-RES → PSD<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="note">Vayner in office</div>
+    </div>
+    <div class="cell" style="background: #F4E7B0;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">21</span><span class="tag" style="background: #DCEFA6;">EXTENDED +2 WKS</span></div>
+      <div class="pill" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AL</span>WK04 ENDS · RUNS TO 4 SEP</div>
+      <div class="pill" style="background: #F5A9D0; color: #2B3F6C;"><span class="chip">AL</span>TIMESHEET<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="warn">Blocked 12:00–17:00 · collecting James</div>
+    </div>
+    <div class="cell" style="background: #F8CFA4;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">22</span><span class="tag">SHOOT DAY</span></div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">F2</span>RED CARD · SHOOT<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="warn">Rocco 10:00 → Sun 14:00, party 20:30. Hand this one over.</div>
+    </div>
+    <div class="cell" style="background: #F9C9DC;">
+      <span class="num">23</span>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">F2</span>RED CARD · EDIT D1<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="note">You free from 14:00</div>
+    </div>
+    <div class="cell" style="background: #F9C9DC;">
+      <span class="num">24</span>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">F2</span>RED CARD · EDIT D2 → V1<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="pill" style="background: #DCCFF0; color: #2B3F6C;"><span class="chip">AL</span>HALIMA · 2 CARD DESIGNS<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AL</span>FINAL RE:ACT TIMESHEET<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="note">Editorial weekly 11:00</div>
+    </div>
+    <div class="cell" style="background: #EFE0F7;">
+      <span class="num">25</span>
+      <div class="pill" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AL</span>WK05 · P11 BUILD<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="pill prop" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">F3</span>40 FEET AWAY · BUILD<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="note">Vayner in office</div>
+    </div>
+    <div class="cell" style="background: #F8CFA4;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">26</span><span class="tag">SHOOT DAY</span></div>
+      <div class="pill" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AL</span>FORAGING SHOOT · ALL DAY<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="note">Already held in your diary</div>
+    </div>
+    <div class="cell" style="background: #F9C9DC;">
+      <span class="num">27</span>
+      <div class="pill prop" style="background: #1B4FE8; color: #FBF8EF;"><span class="chip">AL</span>FORAGING · SELECTS AM<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="pill" style="background: #DCCFF0; color: #2B3F6C;"><span class="chip">AL</span>HALIMA · PRINT-READY FILES<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="warn">Files due today and you leave 18:00</div>
+    </div>
+    <div class="cell" style="background: #DCEFA6;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 6px;"><span class="num">28</span><span class="tag">GOES LIVE</span></div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">F2</span>EP BAG CHECK · LIVE<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="warn">You are away — F2 posts and monitors</div>
+    </div>
+    <div class="cell oot">
+      <span class="num">29</span>
+      <div class="note">GIRLS' GETAWAY</div>
+    </div>
+    <div class="cell oot">
+      <span class="num">30</span>
+      <div class="note">Back 12:00</div>
+    </div>
+    <div class="cell" style="background: #EFE0F7;">
+      <span class="num">31</span>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AL</span>HURLING + MATCHDAY OSG<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+      <div class="pill" style="background: #C6E86A; color: #2B3F6C;"><span class="chip">AL</span>RE:ACT AUG BILLING<span class="dot" style="background: #FFFDF7;">&#9711;</span></div>
+    </div>
+    <div class="cell"><span class="num out">01</span></div>
+    <div class="cell"><span class="num out">02</span></div>
+    <div class="cell"><span class="num out">03</span></div>
+    <div class="cell"><span class="num out">04</span></div>
+    <div class="cell"><span class="num out">05</span></div>
+  </div>
+
+  <div style="display: flex; gap: 16px; align-items: stretch;">
+    <div style="flex: 1; background: #FFFDF7; border: 3px solid #2B3F6C; box-shadow: 5px 5px 0 #2B3F6C; padding: 18px 22px; display: flex; flex-direction: column; gap: 8px;">
+      <div class="disp" style="font-size: 16px;">AUGUST IS WRAP-UP, NOT NEW WORK</div>
+      <div style="font-size: 13.5px; line-height: 1.5; font-weight: 500;">The extension buys two more paid WPP weeks, but the 22nd, 26th and 27th–30th are already spoken for. There is almost no new Pixel capacity in this month.</div>
+    </div>
+    <div style="flex: 1; background: #F4E7B0; border: 3px solid #2B3F6C; box-shadow: 5px 5px 0 #2B3F6C; padding: 18px 22px; display: flex; flex-direction: column; gap: 8px;">
+      <div class="disp" style="font-size: 16px;">TWO CLASHES TO FIX NOW</div>
+      <div style="font-size: 13.5px; line-height: 1.5; font-weight: 500;"><strong>Sat 22</strong> — Red Card shoot against Rocco and a party. <strong>Thu 27</strong> — Halima&rsquo;s print-ready files due the day you leave at 18:00. Both need a person or a new date.</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

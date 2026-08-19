@@ -1,0 +1,300 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;600;700;800&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; color: #2B3F6C; }
+    a { color: #2B3F6C; } a:hover { color: #1B4FE8; }
+    .disp { font-family: 'Archivo Black', 'Helvetica Neue', Arial Black, sans-serif; font-weight: 400; letter-spacing: -0.02em; }
+    .logo { font-family: 'Archivo Black', 'Helvetica Neue', Arial Black, sans-serif; color: #E9C87F;
+            -webkit-text-stroke: 3px #2B3F6C; paint-order: stroke fill; text-shadow: 4px 4px 0 #2B3F6C; letter-spacing: -0.02em; }
+    .grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0; border: 3px solid #2B3F6C; background: #2B3F6C; }
+    .hd { background: #FFFDF7; padding: 12px 10px; text-align: center; font-weight: 800; font-size: 12.5px;
+          letter-spacing: 0.12em; text-transform: uppercase; margin: 0 1.5px 1.5px 0; }
+    .cell { background: #FFFDF7; min-height: 150px; padding: 10px 10px 12px; display: flex; flex-direction: column; gap: 6px; margin: 0 1.5px 1.5px 0; }
+    .num { font-family: 'Archivo Black', 'Helvetica Neue', Arial Black, sans-serif; font-size: 17px; }
+    .out { color: #BDC6DA; }
+    .tag { font-weight: 800; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; border: 2px solid #2B3F6C;
+           border-radius: 999px; padding: 2px 8px; background: #FFFDF7; white-space: nowrap; }
+    .pill { display: flex; align-items: center; gap: 6px; border: 2.5px solid #2B3F6C; border-radius: 999px;
+            box-shadow: 2px 2px 0 #2B3F6C; padding: 4px 9px 4px 4px; font-weight: 800; font-size: 10.5px;
+            letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.15; }
+    .prop { border-style: dashed; box-shadow: none; }
+    .chip { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 21px; height: 21px;
+            border-radius: 999px; border: 2px solid #2B3F6C; background: #FFFDF7; color: #2B3F6C; font-weight: 800; font-size: 9px; }
+    .dot { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px;
+           border-radius: 999px; border: 2px solid #2B3F6C; background: #FFFDF7; color: #2B3F6C; font-size: 9px; font-weight: 800; margin-left: auto; }
+    .note { font-size: 10.5px; font-weight: 700; color: #7A87A8; line-height: 1.35; }
+    .warn { font-size: 10.5px; font-weight: 800; color: #C2410C; line-height: 1.35; }
+    .oot { background: repeating-linear-gradient(45deg, #DAD5C8 0 6px, #C9C3B4 6px 12px); }
+    .box { background: #FFFDF7; border: 3px solid #2B3F6C; box-shadow: 5px 5px 0 #2B3F6C; }
+  </style>
+</helmet>
+<div style="width: 1600px; box-sizing: border-box; background: #FBF8EF; padding: 44px 44px 48px; display: flex; flex-direction: column; gap: 24px;">
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 30px;">
+    <div style="font-family: 'Archivo Black', sans-serif; font-size: 58px; line-height: 0.95; color: #E9C87F; -webkit-text-stroke: 3.5px #2B3F6C; paint-order: stroke fill; text-shadow: 5px 5px 0 #2B3F6C;">ASSET TRACKER</div>
+    <div style="font-size: 13px; font-weight: 700; color: #7A87A8; max-width: 400px; text-align: right; line-height: 1.5;">
+      Every deliverable across all four strands, in one place. The calendars show <em>when</em>; this shows <em>what</em> and <em>whose</em>.
+    </div>
+  </div>
+
+  <div style="border: 3px solid #2B3F6C; box-shadow: 6px 6px 0 #2B3F6C; overflow: hidden;">
+    <div style="display: grid; grid-template-columns: 360px 78px 300px 150px 150px 130px 150px 130px 104px;">
+      <div style="padding: 13px 12px; background: #2B3F6C; color: #FBF8EF; font-size: 10.5px; font-weight: 800; letter-spacing: 0.11em;">ASSET</div>
+      <div style="padding: 13px 12px; background: #2B3F6C; color: #FBF8EF; font-size: 10.5px; font-weight: 800; letter-spacing: 0.11em;">OWNER</div>
+      <div style="padding: 13px 12px; background: #2B3F6C; color: #FBF8EF; font-size: 10.5px; font-weight: 800; letter-spacing: 0.11em;">FORMAT / DELIVERABLE</div>
+      <div style="padding: 13px 12px; background: #2B3F6C; color: #FBF8EF; font-size: 10.5px; font-weight: 800; letter-spacing: 0.11em;">BUILD / PRE-PRO</div>
+      <div style="padding: 13px 12px; background: #2B3F6C; color: #FBF8EF; font-size: 10.5px; font-weight: 800; letter-spacing: 0.11em;">SHOOT</div>
+      <div style="padding: 13px 12px; background: #2B3F6C; color: #FBF8EF; font-size: 10.5px; font-weight: 800; letter-spacing: 0.11em;">V1 SENT</div>
+      <div style="padding: 13px 12px; background: #2B3F6C; color: #FBF8EF; font-size: 10.5px; font-weight: 800; letter-spacing: 0.11em;">FEEDBACK</div>
+      <div style="padding: 13px 12px; background: #2B3F6C; color: #FBF8EF; font-size: 10.5px; font-weight: 800; letter-spacing: 0.11em;">LIVE</div>
+      <div style="padding: 13px 12px; background: #2B3F6C; color: #FBF8EF; font-size: 10.5px; font-weight: 800; letter-spacing: 0.11em;"></div>
+      <div style="grid-column: 1 / -1; padding: 14px 12px 9px; background: #FBF8EF; border-bottom: 3px solid #2B3F6C; border-top: 3px solid #2B3F6C; font-family: 'Archivo Black', sans-serif; font-size: 13px; letter-spacing: 0.02em;">RE:ACT · BOOST IRELAND — dates already agreed with the client</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #C6E86A;"></span><span style="font-weight: 800; font-size: 12.5px;">EP Bag Check</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">F2</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">Stories + saveable carousel</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">18 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">19 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">20–23 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">28 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #F4E7B0; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">IN PROGRESS</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #C6E86A;"></span><span style="font-weight: 800; font-size: 12.5px;">Red Card Holiday Rules</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">F2</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">9:16 Reel · vox pop</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">TBC</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">22 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">24 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">24–28 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">TBC</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #C6E86A;"></span><span style="font-weight: 800; font-size: 12.5px;">Explain Hurling in 10 Seconds</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">9:16 Reel · OSG · board</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">31 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">11 Sep 18:45</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">16 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">17–20 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">TBC</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #C6E86A;"></span><span style="font-weight: 800; font-size: 12.5px;">Matchday Rituals</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">9:16 Reel · OSG · board</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">31 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">11 Sep 18:45</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">16 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">17–20 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">TBC</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #C6E86A;"></span><span style="font-weight: 800; font-size: 12.5px;">First Week Promises</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">9:16 Reel · OSG · board</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">1 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">12 Sep · UCC</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">16 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">17–20 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">TBC</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #C6E86A;"></span><span style="font-weight: 800; font-size: 12.5px;">Reactive · 2 slots a month</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">F2</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">TikTok / Reel</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">week of posting</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">monthly</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #DCCFF0; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">HELD</span></div>
+      <div style="grid-column: 1 / -1; padding: 14px 12px 9px; background: #FBF8EF; border-bottom: 3px solid #2B3F6C; border-top: 3px solid #2B3F6C; font-family: 'Archivo Black', sans-serif; font-size: 13px; letter-spacing: 0.02em;">OGILVY / WPP · GOOGLE PIXEL 11 — in flight, must clear before 4 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #1B4FE8;"></span><span style="font-weight: 800; font-size: 12.5px;">Yes, But (Pro Zoom)</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">9:16 Reel</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">done</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">9 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">12 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">in review</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">TBC</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #F4E7B0; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">IN PROGRESS</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #1B4FE8;"></span><span style="font-weight: 800; font-size: 12.5px;">Bandana Looks</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">Stills + carousel</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">done</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">5 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">sent</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">awaiting client</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">TBC</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #F4E7B0; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">IN PROGRESS</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #1B4FE8;"></span><span style="font-weight: 800; font-size: 12.5px;">Lineage</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">12 second build</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">part built</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">mock to Joe</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">blocked on Joe</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">TBC</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #F4E7B0; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">IN PROGRESS</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #1B4FE8;"></span><span style="font-weight: 800; font-size: 12.5px;">Flood the Feed · IMA sizzle</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">10 second, 3:2</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">2 questions open</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">IMA</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #1B4FE8;"></span><span style="font-weight: 800; font-size: 12.5px;">Foraging shoot</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">TBC on the day</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">26 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">27 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">TBC</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">TBC</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="grid-column: 1 / -1; padding: 14px 12px 9px; background: #FBF8EF; border-bottom: 3px solid #2B3F6C; border-top: 3px solid #2B3F6C; font-family: 'Archivo Black', sans-serif; font-size: 13px; letter-spacing: 0.02em;">OGILVY / WPP · GOOGLE PIXEL 11 — approved in the Quick Wins deck, still to make</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #1B4FE8;"></span><span style="font-weight: 800; font-size: 12.5px;">40 Feet Away</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">F3</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">15" / 12" · Pro Zoom</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">25 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">10 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #1B4FE8;"></span><span style="font-weight: 800; font-size: 12.5px;">Where the Sun Goes</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">F2</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">30" / 20" · Gemini + Pro Zoom</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">9 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">10 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #1B4FE8;"></span><span style="font-weight: 800; font-size: 12.5px;">What's in My Bag</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">F3</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">30" / 20" · colourways</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">3 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">flat lay</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #1B4FE8;"></span><span style="font-weight: 800; font-size: 12.5px;">Dressed to the Elevens</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">F3</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">30" / 20" · colourways</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">9 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #1B4FE8;"></span><span style="font-weight: 800; font-size: 12.5px;">Made in the Details</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">30" / 20" · ASMR atelier</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">1 Oct</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">3 Oct</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">7 Oct</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">8 Oct</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">10 Oct</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #1B4FE8;"></span><span style="font-weight: 800; font-size: 12.5px;">+ 8 more approved ideas</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">??</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">Pixel Perfect Weekend, Look It Up, Little Things, Palette, London in Looks, Park, Two Pieces, Five Days</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #F8CFA4; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">UNPLANNED</span></div>
+      <div style="grid-column: 1 / -1; padding: 14px 12px 9px; background: #FBF8EF; border-bottom: 3px solid #2B3F6C; border-top: 3px solid #2B3F6C; font-family: 'Archivo Black', sans-serif; font-size: 13px; letter-spacing: 0.02em;">VAYNER · INDEED — standing, holds the weekdays</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #F5A9D0;"></span><span style="font-weight: 800; font-size: 12.5px;">JNP FR messaging · 8 pages</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">Deck pages, bilingual copy</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">17–19 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">19 Aug 14:30</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #F4E7B0; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">IN PROGRESS</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #F5A9D0;"></span><span style="font-weight: 800; font-size: 12.5px;">June sprint exports</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">1×1 + 9×16 to Rossella</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #F5A9D0;"></span><span style="font-weight: 800; font-size: 12.5px;">Growth creative kickoff</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">Meeting, time TBC</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #DCCFF0; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">HELD</span></div>
+      <div style="grid-column: 1 / -1; padding: 14px 12px 9px; background: #FBF8EF; border-bottom: 3px solid #2B3F6C; border-top: 3px solid #2B3F6C; font-family: 'Archivo Black', sans-serif; font-size: 13px; letter-spacing: 0.02em;">TYPE-A DIRECT · HALIMA — proposal TAS-P-2026-002, hard dates</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #DCCFF0;"></span><span style="font-weight: 800; font-size: 12.5px;">Business cards</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">Two designs, one to artwork</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">19 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">24 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">25–26 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">27 Aug files</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #DCCFF0;"></span><span style="font-weight: 800; font-size: 12.5px;">Website · English</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">Five pages, phone first</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">from 27 Aug</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">8 Sep</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">two rounds</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">w/c 5 Oct</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #DCCFF0;"></span><span style="font-weight: 800; font-size: 12.5px;">LinkedIn</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">4 posts a month + inbox</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">from launch</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">monthly</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; display: flex; align-items: center; gap: 9px;"><span style="flex: none; width: 13px; height: 13px; border-radius: 999px; border: 2px solid #2B3F6C; background: #DCCFF0;"></span><span style="font-weight: 800; font-size: 12.5px;">Website · French</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 999px; border: 2px solid #2B3F6C; background: #FBF8EF; font-size: 10px; font-weight: 800;">AL</span></div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; color: #7A87A8;">Five pages</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">Oct</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">—</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;">Oct</div>
+      <div style="padding: 11px 12px; font-size: 12px; font-weight: 600; line-height: 1.35; background: #FFFDF7; border-bottom: 2px solid #E4E0D3;"><span style="display: inline-block; border: 2px solid #2B3F6C; border-radius: 999px; padding: 2px 9px; background: #FFFDF7; font-size: 9.5px; font-weight: 800; letter-spacing: 0.06em; white-space: nowrap;">TO DO</span></div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 16px;">
+    <div style="flex: 1; background: #FFFDF7; border: 3px solid #2B3F6C; box-shadow: 5px 5px 0 #2B3F6C; padding: 18px 22px;">
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 15px; margin-bottom: 7px;">24 DELIVERABLES, ONE OF YOU</div>
+      <div style="font-size: 13px; line-height: 1.5; font-weight: 500;">Nineteen are dated. Five Pixel ideas are scheduled and eight more are approved with nowhere to go — that last row is the honest one.</div>
+    </div>
+    <div style="flex: 1; background: #F8CFA4; border: 3px solid #2B3F6C; box-shadow: 5px 5px 0 #2B3F6C; padding: 18px 22px;">
+      <div style="font-family: 'Archivo Black', sans-serif; font-size: 15px; margin-bottom: 7px;">THE UNPLANNED ROW IS THE DECISION</div>
+      <div style="font-size: 13px; line-height: 1.5; font-weight: 500;">Eight approved Pixel ideas have no date and no owner. They either go to F2 and F3 in October, or you tell Rae the slate is five, not thirteen.</div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
