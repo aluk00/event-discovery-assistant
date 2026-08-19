@@ -100,16 +100,18 @@ def header(title, sublabel, chip_rows, t):
         dot = (f'<div style="width: 26px; height: 26px; border-radius: 50%; background: {ACCENT}; '
                f'flex: none; margin-top: 6px;"></div>')
     rows = "".join(
-        f'<div style="display: flex; gap: 8px;">{"".join(chip(l, f, t) for l, f in row)}</div>'
+        f'<div style="display: flex; gap: 8px;">{"".join(chip(label, f, t) for label, f in row)}</div>'
         for row in chip_rows
     )
     return f'''  <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 40px;">
     <div style="display: flex; flex-direction: column;">
       <div style="display: flex; align-items: flex-start; gap: 16px;">
-        <div style="font-family: {DISPLAY}; {DISPLAY_W}font-size: 58px; line-height: 58px; letter-spacing: -0.015em; color: {INK};">{esc(title)}</div>
+        <div style="font-family: {DISPLAY}; {DISPLAY_W}font-size: 58px; line-height: 58px; letter-spacing: -0.015em;
+        color: {INK};">{esc(title)}</div>
         {dot}
       </div>
-      <div style="font-family: {DISPLAY}; {DISPLAY_W}font-size: 16px; line-height: 16px; letter-spacing: 0.06em; color: {SUBTLE}; margin-top: 20px;">{esc(sublabel)}</div>
+      <div style="font-family: {DISPLAY}; {DISPLAY_W}font-size: 16px; line-height: 16px; letter-spacing: 0.06em;
+      color: {SUBTLE}; margin-top: 20px;">{esc(sublabel)}</div>
     </div>
     <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding-top: 2px;">
       {rows}
@@ -132,17 +134,19 @@ def table(columns, rows, t):
 
 def notes(lines):
     items = "".join(
-        f'<div style="font-size: 14px; line-height: 1.3; color: {MUTED};">{esc(l)}</div>'
-        for l in lines
+        f'<div style="font-size: 14px; line-height: 1.3; color: {MUTED};">{esc(label)}</div>'
+        for label in lines
     )
     return (f'\n  <div style="display: flex; gap: 40px; margin-top: 22px;">{items}</div>\n')
 
 
 def footer():
     return f'''
-  <div style="position: absolute; left: {MARGIN}px; right: {MARGIN}px; bottom: 24px; display: flex; justify-content: space-between; align-items: baseline;">
+  <div style="position: absolute; left: {MARGIN}px; right: {MARGIN}px; bottom: 24px; display: flex;
+  justify-content: space-between; align-items: baseline;">
     <div style="font-family: {DISPLAY}; {DISPLAY_W}font-size: 20px; color: {INK};">re:act</div>
-    <div style="font-family: {BODY}; font-weight: 700; font-size: 14px; letter-spacing: 0.06em; color: {MUTED};">BOOST IRELAND  ·  SEP 26</div>
+    <div style="font-family: {BODY}; font-weight: 700; font-size: 14px; letter-spacing: 0.06em;
+    color: {MUTED};">BOOST IRELAND  ·  SEP 26</div>
   </div>
 '''
 
@@ -163,7 +167,8 @@ def document(body):
     a {{ color: {ACCENT}; }} a:hover {{ color: #B92E1B; }}
   </style>
 </helmet>
-<div style="position: relative; width: {W}px; height: {H}px; background: {PAPER}; padding: 48px {MARGIN}px 0; box-sizing: border-box; font-family: {BODY};">
+<div style="position: relative; width: {W}px; height: {H}px; background: {PAPER}; padding: 48px {MARGIN}px 0;
+box-sizing: border-box; font-family: {BODY};">
 {body}
 </div>
 </x-dc>
