@@ -140,3 +140,5 @@ for (const m of [august, september, october]) {
   writeFileSync(new URL('./' + stem + 'Pay.dc.html', import.meta.url), payBoard(m));
 }
 console.log('wrote 3 calendars + 3 pay sheets');
+
+export { august, september, october };

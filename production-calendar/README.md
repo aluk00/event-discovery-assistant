@@ -65,3 +65,23 @@ in PR #3.
 - Pill colour = client; chip on the pill = owner (AL, DM, AD, AN)
 - Solid pill = date fixed with a client; dashed = proposed
 - Hatched cell = Anaïs unavailable
+
+## Google Slides deck
+
+`deck.mjs` builds the same six boards as a 16:9 `.pptx`, from the same
+`months.mjs` data — the calendars are native tables, so they stay editable
+once converted:
+
+```bash
+node deck.mjs && python3 pack.py
+```
+
+`pack.py` is not optional: pptxgenjs stores every part uncompressed and embeds
+one copy of the logo per slide, which makes the file ~950 KB. Packing deflates
+the parts and dedupes the media, bringing it to ~105 KB with identical content.
+
+Upload `TYPE-A-Production-Calendar.pptx` to Drive and open it — Drive converts
+it to native Google Slides.
+
+Slides: title · August calendar · August pay · September calendar · September
+pay · October calendar · October pay · What exists 1 · What exists 2.
