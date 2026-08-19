@@ -73,12 +73,13 @@ const september = {
       { co: 'REACT', who: 'AL', text: 'FINAL PRE-PRO PACKS' },
       { co: 'TAS', who: 'AL', text: 'HALIMA · WEBSITE DESIGN' } ],
       warns: ['Two client deliverables land the same day'] },
-    9: { stage: 'BUILD', tags: [
-      { co: 'WPP', who: 'AN', text: 'DRESSED TO ELEVENS · BUILD', proposed: P },
-      { co: 'WPP', who: 'DM', text: 'WHERE THE SUN GOES · RECCE', proposed: P } ] },
-    10: { stage: 'SHOOT', badge: 'SHOOT DAY', tags: [
+    9: { stage: 'SHOOT', badge: 'SHOOT DAY', tags: [
       { co: 'WPP', who: 'DM', text: 'WHERE THE SUN GOES · SHOOT', proposed: P },
-      { co: 'WPP', who: 'AN', text: '40 FEET AWAY · SHOOT', proposed: P } ], notes: ['Therapy 16:00'] },
+      { co: 'WPP', who: 'DM', text: '40 FEET AWAY · SHOOT', proposed: P },
+      { co: 'WPP', who: 'AN', text: 'DRESSED TO ELEVENS · BUILD', proposed: P } ] },
+    10: { badge: 'TRAVEL', badgeBg: '#CFE0F5', tags: [
+      { co: 'REACT', who: 'AL', text: 'LHR → DUB' },
+      { co: 'REACT', who: 'DM', text: 'LHR → DUB' } ], notes: ['Therapy 16:00 · fare quoted, not booked'] },
     11: { stage: 'SHOOT', badge: 'SHOOT DAY', tags: [
       { co: 'REACT', who: 'AL', text: 'EXPLAIN HURLING' },
       { co: 'REACT', who: 'AL', text: 'MATCHDAY RITUALS' },
@@ -87,8 +88,8 @@ const september = {
       { co: 'REACT', who: 'AL', text: 'FIRST WEEK PROMISES' },
       { co: 'REACT', who: 'DM', text: 'PRODUCE · UCC CORK' } ], notes: ["UCC Freshers' Festival, Cork"] },
     13: { stage: 'EDIT', tags: [
-      { co: 'REACT', who: 'AL', text: 'HURLING + MATCHDAY · EDIT' },
-      { co: 'REACT', who: 'AD', text: 'FIRST WEEK · EDIT' } ] },
+      { co: 'REACT', who: 'AL', text: 'DUB → LHR' },
+      { co: 'REACT', who: 'AD', text: 'ALL THREE · FIRST PASS' } ], notes: ['Rushes backed up and handed to edit same day'] },
     14: { stage: 'EDIT', tags: [ { co: 'REACT', who: 'AD', text: 'ALL THREE · EDIT' } ], notes: ['Editorial weekly 11:00 · Vayner office'] },
     15: { stage: 'EDIT', tags: [ { co: 'REACT', who: 'AD', text: 'ALL THREE · FINAL PASS' } ], notes: ['Vayner in office'] },
     16: { stage: 'FEEDBACK', badge: 'TO CLIENT', tags: [ { co: 'REACT', who: 'AL', text: 'ALL THREE EDITS → CLIENT' } ] },
@@ -105,7 +106,7 @@ const september = {
     30: { stage: 'EDIT', tags: [ { co: 'WPP', who: 'AD', text: 'P11 BACKLOG · EDIT', proposed: P } ] },
   },
   footers: [
-    { title: '1–17 SEP CARRIES EVERYTHING', body: 'Seventeen days hold the Re:act slate, the last two weeks of the WPP contract <em>and</em> Halima&rsquo;s website. Six are Re:act shoots or edits, three go to the appointment and Manchester. Four are genuinely free.' },
+    { title: 'THE 8–16 SEP BLOCK IS FIXED', body: 'Travel, shoots and the edit run are locked in the September spending slide — 10 Sep out, 11 Sep Parnell Park, 12 Sep Cork by road, 13 Sep back, edits to the 15th, V1 on the 16th. Pixel work has to fit either side of it.' },
   ],
 };
 
@@ -121,7 +122,7 @@ const october = {
     4: { stage: 'EDIT', tags: [ { co: 'WPP', who: 'AD', text: 'MADE IN THE DETAILS · EDIT', proposed: P } ] },
     5: { stage: 'LIVE', badge: 'GOES LIVE', tags: [
       { co: 'TAS', who: 'AL', text: 'HALIMA · SITE LIVE (W/C)' },
-      { co: 'REACT', who: 'AL', text: 'RE:ACT OCT · BUILD', proposed: P } ], notes: ['Editorial weekly 11:00'] },
+      { co: 'REACT', who: 'AN', text: 'RE:ACT OCT · BUILD', proposed: P } ], notes: ['Editorial weekly 11:00'] },
     6: { stage: 'FEEDBACK', tags: [ { co: 'TAS', who: 'AL', text: 'C4 SCREENWRITING · 17:00' } ], notes: ['A deadline, not production'] },
     7: { stage: 'FEEDBACK', badge: 'TO CLIENT', tags: [ { co: 'WPP', who: 'AL', text: 'P11 BATCH → CLIENT', proposed: P } ] },
     8: { stage: 'FEEDBACK', tags: [ { co: 'WPP', who: 'AL', text: 'CLIENT FEEDBACK WINDOW', proposed: P } ], notes: ['Therapy 16:00'] },

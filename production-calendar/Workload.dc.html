@@ -28,7 +28,7 @@
   <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 30px;">
     <div class="ttl" style="font-size: 54px; line-height: 0.95;">WHO WORKED WHAT</div>
     <div style="font-size: 13px; font-weight: 700; color: #7A87A8; max-width: 400px; text-align: right; line-height: 1.5;">
-      Set each day rate in the controls above this board and the totals fill in. One day on a project counts as one day.
+      Day counts are per person, per week and per month. Rates are editable in the controls above this board.
     </div>
   </div>
 
@@ -82,7 +82,7 @@
         </div>
       </sc-for>
       <div style="font-size: 12.5px; line-height: 1.5; font-weight: 600; color: #7A87A8;">
-        Totals cover 19 Aug to 12 Oct. Anaïs is not listed — she is the one paying.
+        Diane and Adam carry the rates already agreed on the September spending slide — Adam bills per delivered asset, not per day. Anaïs is not listed; she is the one paying.
       </div>
     </div>
   </div>
@@ -96,17 +96,17 @@
       </div>
     </div>
     <div class="box" style="flex: 1; padding: 20px 24px; background: #F4E7B0;">
-      <div class="disp" style="font-size: 16px; margin-bottom: 8px;">THE WEEK OF 21 SEP IS EMPTY</div>
+      <div class="disp" style="font-size: 16px; margin-bottom: 8px;">TWO THINGS TO SETTLE</div>
       <div style="font-size: 13.5px; line-height: 1.5; font-weight: 500;">
-        Nothing is scheduled while you are in Greece. If you want the team earning that week, work needs briefing
-        and approving before you go on the 17th.
+        Anita has no agreed rate yet, and the September spending slide only costs Diane for her two shoot days —
+        this board has her on eight. Nothing is scheduled at all in the week of 21 Sep while you are in Greece.
       </div>
     </div>
   </div>
 
 </div>
 </x-dc>
-<script data-dc-script data-props='{"rateDiane":{"editor":"int","default":0,"min":0,"max":2000,"step":25,"unit":"£","section":"Day rates"},"rateAdam":{"editor":"int","default":0,"min":0,"max":2000,"step":25,"unit":"£","section":"Day rates"},"rateAnita":{"editor":"int","default":0,"min":0,"max":2000,"step":25,"unit":"£","section":"Day rates"}}'>
+<script data-dc-script data-props='{"rateDiane":{"editor":"int","default":150,"min":0,"max":2000,"step":25,"unit":"£","section":"Rates"},"rateAdam":{"editor":"int","default":150,"min":0,"max":2000,"step":25,"unit":"£","section":"Rates"},"rateAnita":{"editor":"int","default":0,"min":0,"max":2000,"step":25,"unit":"£","section":"Rates"}}'>
 class Component extends DCLogic {
   renderVals() {
     const muted = 'color: #BDC6DA;';
@@ -117,7 +117,7 @@ class Component extends DCLogic {
       ['w/c 17 Aug', '17 – 23 Aug', 3, 1, 1, 0, false],
       ['w/c 24 Aug', '24 – 30 Aug', 4, 2, 1, 1, false],
       ['w/c 31 Aug', '31 Aug – 6 Sep', 5, 0, 0, 3, false],
-      ['w/c 7 Sep', '7 – 13 Sep', 3, 4, 1, 2, false],
+      ['w/c 7 Sep', '7 – 13 Sep', 5, 4, 1, 2, false],
       ['w/c 14 Sep', '14 – 20 Sep', 2, 0, 2, 0, false],
       ['w/c 21 Sep', '21 – 27 Sep · Greece', 0, 0, 0, 0, true],
       ['w/c 28 Sep', '28 Sep – 4 Oct', 3, 1, 2, 1, false],
@@ -132,9 +132,9 @@ class Component extends DCLogic {
 
     const M = [
       ['August', 8, 3, 2, 2, false],
-      ['September', 10, 4, 4, 4, false],
+      ['September', 12, 4, 4, 4, false],
       ['October', 8, 1, 2, 2, false],
-      ['TOTAL', 26, 8, 8, 8, true],
+      ['TOTAL', 28, 8, 8, 8, true],
     ];
     const months = M.map(([label, al, dm, ad, an, total]) => ({
       label, al: String(al), dm: String(dm), ad: String(ad), an: String(an),
@@ -147,19 +147,21 @@ class Component extends DCLogic {
       AN: this.props.rateAnita ?? 0,
     };
     const money = (n) => '£' + n.toLocaleString('en-GB');
+    // Diane is per day, Adam is per delivered asset — the basis agreed on the
+    // September spending slide. Anita has no agreed rate yet.
     const team = [
-      { k: 'DM', name: 'Diane Mendoza', role: 'Producer', days: 8, bg: '#F8CFA4' },
-      { k: 'AD', name: 'Adam', role: 'Editor', days: 8, bg: '#F9C9DC' },
-      { k: 'AN', name: 'Anita', role: 'Creative', days: 8, bg: '#EFE0F7' },
+      { k: 'DM', name: 'Diane Mendoza', role: 'Producer', qty: 8, unit: 'days', bg: '#F8CFA4' },
+      { k: 'AD', name: 'Adam', role: 'Editor', qty: 5, unit: 'assets', bg: '#F9C9DC' },
+      { k: 'AN', name: 'Anita', role: 'Creative', qty: 8, unit: 'days', bg: '#EFE0F7' },
     ].map((p) => {
       const rate = rates[p.k];
       return {
         k: p.k, name: p.name,
         chipStyle: 'background: ' + p.bg + ';',
         line: rate
-          ? p.role + ' · ' + p.days + ' days × ' + money(rate)
-          : p.role + ' · ' + p.days + ' days · set a rate above',
-        pay: rate ? money(rate * p.days) : '—',
+          ? p.role + ' · ' + p.qty + ' ' + p.unit + ' × ' + money(rate)
+          : p.role + ' · ' + p.qty + ' ' + p.unit + ' · set a rate above',
+        pay: rate ? money(rate * p.qty) : '—',
       };
     });
 
