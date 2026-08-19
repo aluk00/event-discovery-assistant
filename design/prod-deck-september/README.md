@@ -41,8 +41,8 @@ Irish pump prices averaged EUR 1.84/L in August 2026 with roughly 9c of excise
 restored from 1 September, which is where the EUR 1.93 comes from. Distance,
 consumption, pump price and the FX rate are named constants.
 
-Car hire, tolls and parking, and contributor gifting are left as TBC — structure,
-not invented costs.
+Car hire and tolls/parking are left as TBC — structure, not invented costs.
+Contributor gifting is free, so it is not a spend line.
 
 ## Art direction
 
