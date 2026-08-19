@@ -12,8 +12,6 @@
     body { margin: 0; font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; color: #2B3F6C; }
     a { color: #2B3F6C; } a:hover { color: #1B4FE8; }
     .disp { font-family: 'Archivo Black', 'Helvetica Neue', Arial Black, sans-serif; font-weight: 400; letter-spacing: -0.02em; }
-    .logo { font-family: 'Archivo Black', 'Helvetica Neue', Arial Black, sans-serif; color: #E9C87F;
-            -webkit-text-stroke: 3px #2B3F6C; paint-order: stroke fill; text-shadow: 4px 4px 0 #2B3F6C; letter-spacing: -0.02em; }
     .grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0; border: 3px solid #2B3F6C; background: #2B3F6C; }
     .hd { background: #FFFDF7; padding: 12px 10px; text-align: center; font-weight: 800; font-size: 12.5px;
           letter-spacing: 0.12em; text-transform: uppercase; margin: 0 1.5px 1.5px 0; }
@@ -28,25 +26,27 @@
     .prop { border-style: dashed; box-shadow: none; }
     .chip { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 21px; height: 21px;
             border-radius: 999px; border: 2px solid #2B3F6C; background: #FFFDF7; color: #2B3F6C; font-weight: 800; font-size: 9px; }
-    .dot { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px;
-           border-radius: 999px; border: 2px solid #2B3F6C; background: #FFFDF7; color: #2B3F6C; font-size: 9px; font-weight: 800; margin-left: auto; }
     .note { font-size: 10.5px; font-weight: 700; color: #7A87A8; line-height: 1.35; }
     .warn { font-size: 10.5px; font-weight: 800; color: #C2410C; line-height: 1.35; }
     .oot { background: repeating-linear-gradient(45deg, #DAD5C8 0 6px, #C9C3B4 6px 12px); }
-    .box { background: #FFFDF7; border: 3px solid #2B3F6C; box-shadow: 5px 5px 0 #2B3F6C; }
+    .mark { display: flex; align-items: center; gap: 12px; }
+    .mark img { height: 34px; width: auto; display: block; }
+    .mark span { font-weight: 800; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #7A87A8; }
+    .th { padding: 12px 13px; background: #2B3F6C; color: #FBF8EF; font-size: 10.5px; font-weight: 800; letter-spacing: 0.11em; }
+    .td { padding: 12px 13px; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; font-size: 13px; font-weight: 700; }
+    .n { font-family: 'Archivo Black', sans-serif; font-size: 16px; text-align: center; }
   </style>
 </helmet>
-<div style="width: 1600px; box-sizing: border-box; background: #FBF8EF; padding: 44px 48px 48px; display: flex; flex-direction: column; gap: 26px;">
+<div style="width: 1600px; box-sizing: border-box; background: #FBF8EF; padding: 40px 48px 44px; display: flex; flex-direction: column; gap: 22px;">
 
   <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 30px;">
-    <div class="logo" style="font-size: 62px; line-height: 0.95;">SEPTEMBER '26</div>
-    <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: flex-end;">
-      <span class="tag" style="font-size: 11.5px; padding: 5px 12px; background: #DCEFA6;">AWAY 18–28 SEP ONLY · PARIS IS OUT</span>
+    <div class="disp" style="font-size: 62px; line-height: 0.95;">SEPTEMBER '26</div>
+    <div style="display: flex; align-items: center; gap: 18px;">
       <div style="display: flex; align-items: center; gap: 7px;">
         <span style="font-weight: 800; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #7A87A8;">Day = stage</span><span style="width: 26px; height: 20px; background: #EFE0F7; border: 2.5px solid #2B3F6C;"></span><span style="width: 26px; height: 20px; background: #F8CFA4; border: 2.5px solid #2B3F6C;"></span><span style="width: 26px; height: 20px; background: #F9C9DC; border: 2.5px solid #2B3F6C;"></span><span style="width: 26px; height: 20px; background: #F4E7B0; border: 2.5px solid #2B3F6C;"></span><span style="width: 26px; height: 20px; background: #DCEFA6; border: 2.5px solid #2B3F6C;"></span>
       </div>
       <div style="display: flex; align-items: center; gap: 7px;">
-        <span style="font-weight: 800; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #7A87A8;">Pill = company</span><span style="width: 26px; height: 20px; background: #1B4FE8; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span><span style="width: 26px; height: 20px; background: #F5A9D0; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span><span style="width: 26px; height: 20px; background: #C6E86A; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span><span style="width: 26px; height: 20px; background: #DCCFF0; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span>
+        <span style="font-weight: 800; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #7A87A8;">Pill = client</span><span style="width: 26px; height: 20px; background: #1B4FE8; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span><span style="width: 26px; height: 20px; background: #F5A9D0; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span><span style="width: 26px; height: 20px; background: #C6E86A; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span><span style="width: 26px; height: 20px; background: #DCCFF0; border: 2.5px solid #2B3F6C; border-radius: 999px;"></span>
       </div>
     </div>
   </div>
@@ -204,11 +204,9 @@
     <div class="cell"><span class="num out">03</span></div>
   </div>
 
-  <div style="display: flex; gap: 16px; align-items: stretch;">
-    <div style="flex: 1; background: #FFFDF7; border: 3px solid #2B3F6C; box-shadow: 5px 5px 0 #2B3F6C; padding: 18px 22px; display: flex; flex-direction: column; gap: 8px;">
-      <div class="disp" style="font-size: 16px;">THE 8–16 SEP BLOCK IS FIXED</div>
-      <div style="font-size: 13.5px; line-height: 1.5; font-weight: 500;">Travel, shoots and the edit run are locked in the September spending slide — 10 Sep out, 11 Sep Parnell Park, 12 Sep Cork by road, 13 Sep back, edits to the 15th, V1 on the 16th. Pixel work has to fit either side of it.</div>
-    </div>
+  <div class="mark">
+    <img src="typea-logo.webp" alt="TYPE-A studios">
+    <span>Production · Sep 26</span>
   </div>
 
 </div>

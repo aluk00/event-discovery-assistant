@@ -1,9 +1,11 @@
-import { monthBoard } from './build.mjs';
-import { writeFileSync } from 'node:fs';
+import { monthBoard, payBoard, writeFileSync } from './build.mjs';
 
 const P = true; // proposed
 
 const august = {
+  year: 2026, month: 7,
+  payPeriod: '19 – 31 August 2026', invoiceBy: '31 Aug', mark: 'Production · Aug 26',
+  rates: { DM: 150, AD: 150, AN: 0 }, assets: { AD: 1 },
   title: "AUGUST '26", flag: 'WPP EXTENDED — NOW RUNS TO 4 SEP', flagBg: '#DCEFA6',
   lead: [26, 27, 28, 29, 30, 31], days: 31, trail: ['01', '02', '03', '04', '05'],
   cells: {
@@ -46,12 +48,12 @@ const august = {
       { co: 'REACT', who: 'AN', text: 'HURLING + MATCHDAY OSG' },
       { co: 'REACT', who: 'AL', text: 'RE:ACT AUG BILLING' } ] },
   },
-  footers: [
-    { title: 'AUGUST IS WRAP-UP, NOT NEW WORK', body: 'The extension buys two more paid WPP weeks, but the 22nd, 26th and 27th–30th are already spoken for. There is almost no new Pixel capacity in this month.' },
-  ],
 };
 
 const september = {
+  year: 2026, month: 8,
+  payPeriod: '1 – 30 September 2026', invoiceBy: '30 Sep', mark: 'Production · Sep 26',
+  rates: { DM: 150, AD: 150, AN: 0 }, assets: { AD: 3 },
   title: "SEPTEMBER '26", flag: 'AWAY 18–28 SEP ONLY · PARIS IS OUT', flagBg: '#DCEFA6',
   lead: [30, 31], days: 30, trail: ['01', '02', '03'],
   cells: {
@@ -105,12 +107,12 @@ const september = {
       { co: 'WPP', who: 'AL', text: 'REVIEW WHAT THE TEAM SHIPPED', proposed: P } ], notes: ['Vayner in office'] },
     30: { stage: 'EDIT', tags: [ { co: 'WPP', who: 'AD', text: 'P11 BACKLOG · EDIT', proposed: P } ] },
   },
-  footers: [
-    { title: 'THE 8–16 SEP BLOCK IS FIXED', body: 'Travel, shoots and the edit run are locked in the September spending slide — 10 Sep out, 11 Sep Parnell Park, 12 Sep Cork by road, 13 Sep back, edits to the 15th, V1 on the 16th. Pixel work has to fit either side of it.' },
-  ],
 };
 
 const october = {
+  year: 2026, month: 9,
+  payPeriod: '1 – 31 October 2026', invoiceBy: '31 Oct', mark: 'Production · Oct 26',
+  rates: { DM: 150, AD: 150, AN: 0 }, assets: { AD: 1 },
   title: "OCTOBER '26", flag: 'FULL MONTH BACK — THE CATCH-UP', flagBg: '#DCEFA6',
   lead: [27, 28, 29, 30], days: 31, trail: [],
   cells: {
@@ -130,12 +132,11 @@ const october = {
     10: { stage: 'LIVE', badge: 'GOES LIVE', tags: [ { co: 'WPP', who: 'AL', text: 'FIRST P11 BATCH LIVE', proposed: P } ] },
     12: { stage: 'BUILD', tags: [ { co: 'TAS', who: 'AL', text: 'HALIMA · FRENCH SITE KICKOFF', proposed: P } ], notes: ['Editorial weekly 11:00'] },
   },
-  footers: [
-    { title: 'OCTOBER IS THE PAYBACK MONTH', body: 'With Paris gone this is a clear month. The Pixel backlog the team built while you were away gets reviewed, revised and shipped, and Halima&rsquo;s French site starts.' },
-  ],
 };
 
-writeFileSync(new URL('./August.dc.html', import.meta.url), monthBoard(august));
-writeFileSync(new URL('./September.dc.html', import.meta.url), monthBoard(september));
-writeFileSync(new URL('./October.dc.html', import.meta.url), monthBoard(october));
-console.log('wrote August / September / October');
+for (const m of [august, september, october]) {
+  const stem = m.title.split(' ')[0][0] + m.title.split(' ')[0].slice(1).toLowerCase();
+  writeFileSync(new URL('./' + stem + '.dc.html', import.meta.url), monthBoard(m));
+  writeFileSync(new URL('./' + stem + 'Pay.dc.html', import.meta.url), payBoard(m));
+}
+console.log('wrote 3 calendars + 3 pay sheets');

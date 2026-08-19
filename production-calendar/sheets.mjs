@@ -1,5 +1,4 @@
-import { T, CO, esc, wrap } from './build.mjs';
-import { writeFileSync } from 'node:fs';
+import { T, CO, esc, wrap, mark, writeFileSync } from './build.mjs';
 
 // Deliberately slim: one date column, not five. The calendars carry the detail;
 // this is the list you scan to see what exists and who has it.
@@ -68,9 +67,7 @@ for (const row of ROWS) {
 const tracker = wrap(`<div style="width: 1520px; box-sizing: border-box; background: ${T.ground}; padding: 44px 44px 48px; display: flex; flex-direction: column; gap: 24px;">
   <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 30px;">
     <div style="font-family: 'Archivo Black', sans-serif; font-size: 54px; line-height: 0.95; color: ${T.gold}; -webkit-text-stroke: 3.5px ${T.ink}; paint-order: stroke fill; text-shadow: 5px 5px 0 ${T.ink};">WHAT EXISTS</div>
-    <div style="font-size: 13px; font-weight: 700; color: ${T.dim}; max-width: 380px; text-align: right; line-height: 1.5;">
-      One line per deliverable, one date column. The months carry the detail — this is the list you scan.
-    </div>
+
   </div>
 
   <div style="border: 3px solid ${T.ink}; box-shadow: 6px 6px 0 ${T.ink}; overflow: hidden;">
@@ -79,10 +76,8 @@ ${HEADS.map((h) => `      <div style="padding: 13px 13px; background: ${T.ink}; 
 ${body}    </div>
   </div>
 
-  <div style="background: #F8CFA4; border: 3px solid ${T.ink}; box-shadow: 5px 5px 0 ${T.ink}; padding: 18px 22px;">
-    <div style="font-family: 'Archivo Black', sans-serif; font-size: 15px; margin-bottom: 7px;">THE UNPLANNED ROW IS THE DECISION</div>
-    <div style="font-size: 13px; line-height: 1.5; font-weight: 500;">Eight approved Pixel ideas have no date and no owner. They either get picked up in October, or you tell Rae the slate is five, not thirteen.</div>
-  </div>
+${mark('Production · Aug – Oct 26')}
+
 </div>`);
 
 writeFileSync(new URL('./Tracker.dc.html', import.meta.url), tracker);

@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;600;700;800&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; color: #2B3F6C; }
+    a { color: #2B3F6C; } a:hover { color: #1B4FE8; }
+    .disp { font-family: 'Archivo Black', 'Helvetica Neue', Arial Black, sans-serif; font-weight: 400; letter-spacing: -0.02em; }
+    .grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0; border: 3px solid #2B3F6C; background: #2B3F6C; }
+    .hd { background: #FFFDF7; padding: 12px 10px; text-align: center; font-weight: 800; font-size: 12.5px;
+          letter-spacing: 0.12em; text-transform: uppercase; margin: 0 1.5px 1.5px 0; }
+    .cell { background: #FFFDF7; min-height: 150px; padding: 10px 10px 12px; display: flex; flex-direction: column; gap: 6px; margin: 0 1.5px 1.5px 0; }
+    .num { font-family: 'Archivo Black', 'Helvetica Neue', Arial Black, sans-serif; font-size: 17px; }
+    .out { color: #BDC6DA; }
+    .tag { font-weight: 800; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; border: 2px solid #2B3F6C;
+           border-radius: 999px; padding: 2px 8px; background: #FFFDF7; white-space: nowrap; }
+    .pill { display: flex; align-items: center; gap: 6px; border: 2.5px solid #2B3F6C; border-radius: 999px;
+            box-shadow: 2px 2px 0 #2B3F6C; padding: 4px 9px 4px 4px; font-weight: 800; font-size: 10.5px;
+            letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.15; }
+    .prop { border-style: dashed; box-shadow: none; }
+    .chip { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 21px; height: 21px;
+            border-radius: 999px; border: 2px solid #2B3F6C; background: #FFFDF7; color: #2B3F6C; font-weight: 800; font-size: 9px; }
+    .note { font-size: 10.5px; font-weight: 700; color: #7A87A8; line-height: 1.35; }
+    .warn { font-size: 10.5px; font-weight: 800; color: #C2410C; line-height: 1.35; }
+    .oot { background: repeating-linear-gradient(45deg, #DAD5C8 0 6px, #C9C3B4 6px 12px); }
+    .mark { display: flex; align-items: center; gap: 12px; }
+    .mark img { height: 34px; width: auto; display: block; }
+    .mark span { font-weight: 800; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #7A87A8; }
+    .th { padding: 12px 13px; background: #2B3F6C; color: #FBF8EF; font-size: 10.5px; font-weight: 800; letter-spacing: 0.11em; }
+    .td { padding: 12px 13px; background: #FFFDF7; border-bottom: 2px solid #E4E0D3; font-size: 13px; font-weight: 700; }
+    .n { font-family: 'Archivo Black', sans-serif; font-size: 16px; text-align: center; }
+  </style>
+</helmet>
+<div style="width: 1180px; box-sizing: border-box; background: #FBF8EF; padding: 40px 44px 44px; display: flex; flex-direction: column; gap: 22px;">
+
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;">
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <div class="disp" style="font-size: 44px; line-height: 0.95;">SEPTEMBER '26</div>
+      <div style="font-weight: 800; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #7A87A8;">Pay sheet · 1 – 30 September 2026</div>
+    </div>
+    <div style="font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #7A87A8; text-align: right; line-height: 1.6;">
+      Invoice by 30 Sep
+    </div>
+  </div>
+
+  <div style="border: 3px solid #2B3F6C; box-shadow: 6px 6px 0 #2B3F6C; overflow: hidden;">
+    <div style="display: grid; grid-template-columns: 150px 140px repeat(4, minmax(0, 1fr));">
+      <div class="th">WEEK</div>
+      <div class="th">DATES</div>
+      <div class="th" style="text-align: center;">ANAÏS</div>
+      <div class="th" style="text-align: center;">DIANE</div>
+      <div class="th" style="text-align: center;">ADAM</div>
+      <div class="th" style="text-align: center;">ANITA</div>
+      <div class="td" style="font-weight: 800;">w/c 31 Aug</div>
+      <div class="td" style="color: #7A87A8; font-weight: 600;">1–6 Sep</div>
+      <div class="td n">4</div>
+      <div class="td n" style="color: #BDC6DA;">—</div>
+      <div class="td n" style="color: #BDC6DA;">—</div>
+      <div class="td n">2</div>
+      <div class="td" style="font-weight: 800;">w/c 7 Sep</div>
+      <div class="td" style="color: #7A87A8; font-weight: 600;">7–13 Sep</div>
+      <div class="td n">5</div>
+      <div class="td n">4</div>
+      <div class="td n">1</div>
+      <div class="td n">2</div>
+      <div class="td" style="font-weight: 800;">w/c 14 Sep</div>
+      <div class="td" style="color: #7A87A8; font-weight: 600;">14–20 Sep</div>
+      <div class="td n">2</div>
+      <div class="td n" style="color: #BDC6DA;">—</div>
+      <div class="td n">2</div>
+      <div class="td n" style="color: #BDC6DA;">—</div>
+      <div class="td" style="font-weight: 800;">w/c 21 Sep</div>
+      <div class="td" style="color: #7A87A8; font-weight: 600;">21–27 Sep</div>
+      <div class="td n" style="color: #BDC6DA;">—</div>
+      <div class="td n" style="color: #BDC6DA;">—</div>
+      <div class="td n" style="color: #BDC6DA;">—</div>
+      <div class="td n" style="color: #BDC6DA;">—</div>
+      <div class="td" style="font-weight: 800;">w/c 28 Sep</div>
+      <div class="td" style="color: #7A87A8; font-weight: 600;">28–30 Sep</div>
+      <div class="td n">1</div>
+      <div class="td n" style="color: #BDC6DA;">—</div>
+      <div class="td n">1</div>
+      <div class="td n" style="color: #BDC6DA;">—</div>
+      <div class="td" style="background: #DCEFA6; border-bottom: none; font-weight: 800;">TOTAL DAYS</div>
+      <div class="td" style="background: #DCEFA6; border-bottom: none;"></div>
+      <div class="td n" style="background: #DCEFA6; border-bottom: none;">12</div>
+      <div class="td n" style="background: #DCEFA6; border-bottom: none;">4</div>
+      <div class="td n" style="background: #DCEFA6; border-bottom: none;">4</div>
+      <div class="td n" style="background: #DCEFA6; border-bottom: none;">4</div>
+    </div>
+  </div>
+
+  <div style="background: #FFFDF7; border: 3px solid #2B3F6C; box-shadow: 6px 6px 0 #2B3F6C; padding: 22px 24px; display: flex; flex-direction: column; gap: 15px;">
+    <div class="disp" style="font-size: 18px;">OWED FOR SEPTEMBER</div>
+      <div style="display: flex; align-items: center; gap: 13px; border-bottom: 2px dashed #BDC6DA; padding-bottom: 13px;">
+        <span style="flex: none; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; border: 2.5px solid #2B3F6C; background: #F8CFA4; font-weight: 800; font-size: 10px;">DM</span>
+        <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1;">
+          <span style="font-size: 14px; font-weight: 800;">Diane</span>
+          <span style="font-size: 11.5px; font-weight: 700; color: #7A87A8;">4 days × £150</span>
+        </div>
+        <span class="disp" style="font-size: 22px;">£600</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 13px; border-bottom: 2px dashed #BDC6DA; padding-bottom: 13px;">
+        <span style="flex: none; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; border: 2.5px solid #2B3F6C; background: #F9C9DC; font-weight: 800; font-size: 10px;">AD</span>
+        <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1;">
+          <span style="font-size: 14px; font-weight: 800;">Adam</span>
+          <span style="font-size: 11.5px; font-weight: 700; color: #7A87A8;">3 assets × £150</span>
+        </div>
+        <span class="disp" style="font-size: 22px;">£450</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 13px; border-bottom: 2px dashed #BDC6DA; padding-bottom: 13px;">
+        <span style="flex: none; display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; border: 2.5px solid #2B3F6C; background: #EFE0F7; font-weight: 800; font-size: 10px;">AN</span>
+        <div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1;">
+          <span style="font-size: 14px; font-weight: 800;">Anita</span>
+          <span style="font-size: 11.5px; font-weight: 700; color: #7A87A8;">4 days · no rate agreed</span>
+        </div>
+        <span class="disp" style="font-size: 22px;">—</span>
+      </div>
+  </div>
+
+  <div class="mark">
+    <img src="typea-logo.webp" alt="TYPE-A studios">
+    <span>Production · Sep 26</span>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
