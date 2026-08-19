@@ -2,6 +2,11 @@
 *.dc.html
 canvas.json
 crew-sheet.csv
+deck.json
 
-# Seeded canvas output — ~2.3 MB of editor payload, rebuilt by seed-canvas.mjs
+# Build outputs
 september-shoot-block.html
+boost-ireland-spend.pptx
+node_modules/
+package-lock.json
+package.json
