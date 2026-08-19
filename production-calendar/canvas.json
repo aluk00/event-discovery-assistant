@@ -1,11 +1,11 @@
 {
   "artboards": [
-    { "file": "Main.dc.html",      "x": 0,    "y": 0,    "w": 1640, "h": 1040, "title": "Overview + key" },
-    { "file": "August.dc.html",    "x": 0,    "y": 1160, "w": 1600, "h": 1230, "title": "August '26" },
-    { "file": "September.dc.html", "x": 1700, "y": 1160, "w": 1600, "h": 1070, "title": "September '26" },
-    { "file": "October.dc.html",   "x": 3400, "y": 1160, "w": 1600, "h": 1070, "title": "October '26" },
-    { "file": "Tracker.dc.html",   "x": 0,    "y": 2500, "w": 1600, "h": 1560, "title": "Asset tracker" },
-    { "file": "Capacity.dc.html",  "x": 1700, "y": 2500, "w": 1400, "h": 1000, "title": "Can this fit?" }
+    { "file": "Main.dc.html",      "x": 0,    "y": 0,    "w": 1640, "h": 1060, "title": "Overview + key" },
+    { "file": "August.dc.html",    "x": 0,    "y": 1180, "w": 1600, "h": 1330, "title": "August '26" },
+    { "file": "September.dc.html", "x": 1700, "y": 1180, "w": 1600, "h": 1180, "title": "September '26" },
+    { "file": "October.dc.html",   "x": 3400, "y": 1180, "w": 1600, "h": 1180, "title": "October '26" },
+    { "file": "Tracker.dc.html",   "x": 0,    "y": 2620, "w": 1600, "h": 1660, "title": "Asset tracker" },
+    { "file": "Capacity.dc.html",  "x": 1700, "y": 2620, "w": 1400, "h": 1020, "title": "Can this fit?" }
   ],
   "annotations": [
     { "id": "start-here", "x": 1700, "y": 40, "w": 300, "text": "Start here, then follow the months left to right.\n\nEverything dashed is my proposal — drag it, retype it, delete it. Solid outlines are dates already fixed somewhere real." }
