@@ -233,7 +233,6 @@ def spend_rows():
          f"{KM} km", money(FUEL)),
         ("CAR HIRE", "Dublin ⇄ Cork for the UCC shoot", "12 Sep", "TBC"),
         ("TOLLS + PARKING", "M7 / M8, Parnell Park, UCC", "11–12 Sep", "TBC"),
-        ("GIFTING", "BOOST multipacks for contributors", "12 Sep", "TBC"),
         ("PADDING", "10% contingency on the costed lines", "10%", money(PADDING)),
     ]
 
@@ -260,10 +259,12 @@ def spend():
             cell(primary(cost, INK if priced else HAIRLINE, 17), 48, align="flex-end"),
         ])
 
-    blocks = (total_block("PROJECTED", money(PROJECTED), "#FFFFFF", "Three lines still to price")
+    open_lines = sum(1 for r in spend_rows() if not r[3].startswith("£"))
+    blocks = (total_block("PROJECTED", money(PROJECTED), "#FFFFFF",
+                          f"{open_lines} lines still to price")
               + total_block("BUDGET", money(BUDGET), "#FFFFFF",
                             f"{len(WORK_DAYS)} work days × £{DAY_RATE:,.0f}")
-              + total_block("HEADROOM", money(HEADROOM), SHOOT, "Before the three open lines"))
+              + total_block("HEADROOM", money(HEADROOM), SHOOT, "Before the open lines"))
 
     body = title("SPEND")
     body += table(SPEND_COLUMNS, rows)
